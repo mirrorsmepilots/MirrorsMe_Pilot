@@ -1,0 +1,367 @@
+/* ============================================================
+   Agentic Demo Showcase — shared styles
+   Display: Space Grotesk · Body: Inter · Labels: IBM Plex Mono
+   ============================================================ */
+
+:root {
+  --paper:      #F7F7F5;
+  --paper-2:    #FFFFFF;
+  --ink:        #15161D;
+  --slate:      #5C5C68;
+  --slate-2:    #8A8A95;
+  --line:       #E5E4DD;
+  --line-2:     #EFEEE8;
+  --brand:      #3B36C9;
+  --brand-deep: #2A2699;
+  --signal:     #FF5C39;
+
+  /* per-page industry accent — overridden inline on each industry page */
+  --accent:     #3B36C9;
+  --accent-soft:#ECEBFB;
+
+  --radius:     14px;
+  --radius-sm:  10px;
+  --shadow:     0 1px 2px rgba(21,22,29,.04), 0 8px 28px rgba(21,22,29,.06);
+  --shadow-lift:0 2px 6px rgba(21,22,29,.06), 0 18px 48px rgba(21,22,29,.12);
+  --maxw:       1180px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---------- Eyebrow / mono labels ---------- */
+.eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--slate-2);
+  margin: 0;
+}
+
+/* ---------- Top nav ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247,247,245,.82);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  font-size: 18px;
+}
+.brand .node { flex: 0 0 auto; }
+.nav-links { display: flex; gap: 26px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  color: var(--slate);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color .15s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.is-active { color: var(--ink); }
+
+/* ---------- Hero ---------- */
+.hero { padding: 78px 0 30px; }
+.hero h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  letter-spacing: -.025em;
+  line-height: 1.04;
+  font-size: clamp(2.5rem, 5.5vw, 4.1rem);
+  margin: 16px 0 0;
+  max-width: 16ch;
+}
+.hero .lede {
+  margin: 22px 0 0;
+  max-width: 60ch;
+  font-size: 1.18rem;
+  color: var(--slate);
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin-top: 30px;
+}
+.hero-meta .stat .n {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.hero-meta .stat .l {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--slate-2);
+}
+
+/* ---------- Section header ---------- */
+.section { padding: 46px 0 90px; }
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 34px;
+}
+.section-head h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin: 10px 0 0;
+}
+
+/* ---------- Industry grid (home) ---------- */
+.grid-ind {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+.icard {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.icard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--ic, var(--brand));
+}
+.icard:focus-visible {
+  outline: 3px solid var(--ic, var(--brand));
+  outline-offset: 3px;
+}
+.icard .thumb {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  background: var(--ic-soft, #eee);
+  border-bottom: 1px solid var(--line);
+}
+.icard .thumb svg { width: 100%; height: 100%; display: block; }
+.icard .body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+.icard .tag {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ic, var(--brand));
+}
+.icard h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 1.32rem;
+  letter-spacing: -.01em;
+  margin: 8px 0 0;
+}
+.icard p { color: var(--slate); font-size: .98rem; margin: 9px 0 0; flex: 1; }
+.icard .more {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--ic, var(--brand));
+}
+.icard .more svg { transition: transform .2s ease; }
+.icard:hover .more svg { transform: translate(3px, -3px); }
+
+/* ---------- Solution grid (industry pages) ---------- */
+.grid-sol {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.scard {
+  position: relative;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 30px 28px;
+  box-shadow: var(--shadow);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  display: flex;
+  flex-direction: column;
+}
+.scard::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 22px; bottom: 22px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+.scard:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); border-color: var(--accent); }
+.scard:hover::before { opacity: 1; }
+.scard .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.scard .icon {
+  width: 52px; height: 52px;
+  border-radius: 13px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: grid; place-items: center;
+  flex: 0 0 auto;
+}
+.scard .icon svg { width: 26px; height: 26px; }
+.status {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--slate);
+  white-space: nowrap;
+  height: fit-content;
+}
+.status.live   { color: #0E8A5F; border-color: #Bfe7d6; background: #EBF8F1; }
+.status.demo   { color: var(--accent); border-color: var(--accent-soft); background: var(--accent-soft); }
+.status.wip    { color: #B26A00; border-color: #F3E2BD; background: #FBF3DF; }
+.scard h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 1.45rem;
+  letter-spacing: -.015em;
+  margin: 20px 0 0;
+}
+.scard p { color: var(--slate); margin: 10px 0 0; font-size: 1rem; flex: 1; }
+.scard .stack {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  margin: 18px 0 0;
+}
+.chip {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: var(--slate);
+  background: var(--line-2);
+  border-radius: 6px;
+  padding: 4px 9px;
+}
+.scard .more {
+  margin-top: 20px;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-weight: 600; font-size: .96rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+.scard .more svg { transition: transform .2s ease; }
+.scard .more:hover svg { transform: translate(3px,-3px); }
+
+/* ---------- Industry hero band ---------- */
+.ihero {
+  padding: 64px 0 8px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(120% 140% at 100% 0%, var(--accent-soft) 0%, transparent 55%);
+}
+.ihero .crumb {
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; color: var(--slate);
+  font-size: 14px; font-weight: 500;
+  margin-bottom: 22px;
+}
+.ihero .crumb:hover { color: var(--ink); }
+.ihero h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  letter-spacing: -.025em;
+  line-height: 1.06;
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
+  margin: 8px 0 0;
+  max-width: 18ch;
+}
+.ihero .intro {
+  margin: 22px 0 40px;
+  max-width: 64ch;
+  font-size: 1.15rem;
+  color: var(--slate);
+}
+
+/* ---------- Footer ---------- */
+.foot {
+  border-top: 1px solid var(--line);
+  padding: 40px 0;
+  color: var(--slate);
+  font-size: .92rem;
+}
+.foot-inner { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; }
+.foot a { color: var(--slate); text-decoration: none; }
+.foot a:hover { color: var(--ink); }
+
+/* ---------- agent-node glyph pulse ---------- */
+.node circle.r1 { transform-origin: center; animation: pulse 3.4s ease-in-out infinite; }
+.node circle.r2 { transform-origin: center; animation: pulse 3.4s ease-in-out infinite .6s; }
+@keyframes pulse {
+  0%, 100% { opacity: .9; }
+  50% { opacity: .35; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .grid-ind { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 20px; }
+  .grid-sol { grid-template-columns: 1fr; }
+  .nav-links a:not(.brand) { display: none; }
+  .section-head { flex-direction: column; align-items: flex-start; }
+  .hero { padding: 54px 0 18px; }
+}
+@media (max-width: 520px) {
+  .grid-ind { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; scroll-behavior: auto; transition: none !important; }
+}
